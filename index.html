@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 11 Simulation Accurate</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI+Variable:wght@400;600&family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Windows_11_logo.svg/48px-Windows_11_logo.svg.png">
+</head>
+<body class="light-mode">
+
+    <div id="login-screen">
+        <div class="login-content">
+            <img src="wallpaper.jpg" alt="Login Background" class="login-background">
+            <div class="login-time">12:00 PM</div>
+            <div class="login-date">Sunday, January 1</div>
+            <div class="login-prompt">Click to sign in</div>
+        </div>
+    </div>
+
+    <div id="loading-indicator"></div>
+    <div id="snap-hint"></div>
+    <div id="toast-container"></div>
+
+    <div id="desktop">
+        <div class="desktop-icon" id="my-computer-icon" title="This PC" data-app-type="my-computer" data-icon-url="https://img.icons8.com/?size=100&id=gXoJoyTtYXFg&format=png&color=000000" draggable="true">
+             <img src="https://img.icons8.com/?size=100&id=gXoJoyTtYXFg&format=png&color=000000" alt="This PC">
+            <span>This PC</span>
+        </div>
+        <div class="desktop-icon" id="recycle-bin-icon" title="Recycle Bin" data-app-type="recycle-bin" data-icon-url="https://img.icons8.com/color/48/recycle-bin.png" draggable="true">
+             <img src="https://img.icons8.com/color/48/recycle-bin.png" alt="Recycle Bin" class="recycle-bin-image">
+            <span>Recycle Bin</span>
+        </div>
+         <div class="desktop-icon" id="notepad-icon" title="Notepad" data-app-type="notepad" data-icon-url="https://img.icons8.com/fluency/48/notepad.png" draggable="true">
+             <img src="https://img.icons8.com/fluency/48/notepad.png" alt="Notepad">
+            <span>Notepad</span>
+        </div>
+        <div class="desktop-icon" id="browser-icon" title="Web Browser" data-app-type="browser" data-icon-url="https://img.icons8.com/color/48/000000/ms-edge.png" draggable="true">
+             <img src="https://img.icons8.com/color/48/000000/ms-edge.png" alt="Browser">
+            <span>Browser</span>
+        </div>
+
+        <div id="window-container">
+        </div>
+    </div>
+
+    <div id="start-menu">
+        <div class="start-search-box">
+            <i class="fa-solid fa-search"></i>
+            <input type="text" id="start-search-input" placeholder="Search for apps, settings, and documents">
+            <div id="start-search-results">
+                 <div class="search-category" id="search-apps-category" style="display: none;">
+                     <h4>Apps</h4>
+                     <ul id="search-apps-list"></ul>
+                 </div>
+                 <div class="search-category" id="search-other-category" style="display: none;">
+                     <h4>Other Results</h4>
+                     <ul><li>(No other results simulated)</li></ul>
+                 </div>
+            </div>
+        </div>
+        <div id="start-pinned-area">
+            <div class="start-section pinned-section">
+                <div class="start-section-header">
+                    <span>Pinned</span>
+                    <button class="all-apps-button">All apps <i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+                <div class="start-app-grid">
+                    <div class="start-app-icon" title="Browser" data-app-id="browser"><img src="https://img.icons8.com/color/48/000000/ms-edge.png" alt="Edge"/><span>Browser</span></div>
+                    <div class="start-app-icon" title="Word" data-app-id="word"><img src="https://img.icons8.com/color/48/000000/ms-word.png" alt="Word"/><span>Word</span></div>
+                    <div class="start-app-icon" title="Excel" data-app-id="excel"><img src="https://img.icons8.com/color/48/000000/ms-excel.png" alt="Excel"/><span>Excel</span></div>
+                    <div class="start-app-icon" title="PowerPoint" data-app-id="powerpoint"><img src="https://img.icons8.com/color/48/000000/ms-powerpoint.png" alt="PowerPoint"/><span>PowerPoint</span></div>
+                    <div class="start-app-icon" title="Settings" data-app-id="settings"><img src="https://img.icons8.com/fluency/48/settings.png" alt="Settings"/><span>Settings</span></div>
+                    <div class="start-app-icon" title="Calculator" data-app-id="calculator"><img src="https://img.icons8.com/fluency/48/calculator.png" alt="Calculator"/><span>Calculator</span></div>
+                    <div class="start-app-icon" title="File Explorer" data-app-id="my-computer"><img src="https://img.icons8.com/color/48/folder-invoices--v1.png" alt="File Explorer"/><span>File Explorer</span></div>
+                    <div class="start-app-icon" title="Notepad" data-app-id="notepad"><img src="https://img.icons8.com/fluency/48/notepad.png" alt="Notepad"/><span>Notepad</span></div>
+                    <div class="start-app-icon" title="Photos" data-app-id="photos"><img src="https://img.icons8.com/fluency/48/photos.png" alt="Photos"/><span>Photos</span></div>
+                    <div class="start-app-icon" title="Mail" data-app-id="mail"><img src="https://img.icons8.com/fluency/48/mail.png" alt="Mail"/><span>Mail</span></div>
+                    <div class="start-app-icon" title="Store" data-app-id="store"><img src="https://img.icons8.com/fluency/48/microsoft-store.png" alt="Store"/><span>Store</span></div>
+                    <div class="start-app-icon" title="Clock" data-app-id="clock"><img src="https://img.icons8.com/fluency/48/alarm-clock.png" alt="Clock"/><span>Clock</span></div>
+                </div>
+            </div>
+             <div class="start-section recommended-section">
+                 <div class="start-section-header">
+                    <span>Recommended</span>
+                    <button class="more-button">More <i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+                 <div id="start-recommended-items">
+                     <div class="no-recommendations">No recommendations (yet)</div>
+                 </div>
+             </div>
+         </div>
+         <div id="start-all-apps-area" style="display: none;">
+             <div class="start-section-header">
+                <button class="back-to-pinned-button"><i class="fa-solid fa-chevron-left"></i> Back</button>
+                <span>All apps</span>
+             </div>
+             <div id="all-apps-list"></div>
+         </div>
+         <div class="start-user-area">
+             <div class="user-profile">
+                 <img src="https://img.icons8.com/material-sharp/24/user-male-circle.png" alt="User" class="user-avatar">
+                 <span>User</span>
+             </div>
+             <button class="power-button" title="Power"><i class="fa-solid fa-power-off"></i></button>
+         </div>
+    </div>
+
+    <div id="tray-flyout">
+         <div class="tray-grid">
+            <div class="tray-icon" title="Bluetooth"><img src="https://img.icons8.com/fluency/30/bluetooth.png" alt="Bluetooth"/></div>
+            <div class="tray-icon" title="Windows Defender"><img src="https://img.icons8.com/color/30/windows-defender.png" alt="Defender"/></div>
+            <div class="tray-icon" title="Firewall"><img src="https://img.icons8.com/fluency/30/private-lock.png" alt="Lock"/></div>
+            <div class="tray-icon" title="Antivirus"><img src="https://img.icons8.com/?size=100&id=E6YWCTmNEs3h&format=png&color=000000" alt="Shield"/></div>
+            <div class="tray-icon" title="Teams"><img src="https://img.icons8.com/?size=100&id=zQ92KI7XjZgR&format=png&color=000000" alt="Teams"/></div>
+            <div class="tray-icon" title="Whats App"><img src="https://img.icons8.com/?size=100&id=30448&format=png&color=000000" alt="App1"/></div>
+            <div class="tray-icon" title="OneDrive"><img src="https://img.icons8.com/?size=100&id=PnENrLMMW4eV&format=png&color=000000" alt="OneDrive"/></div>
+            <div class="tray-icon" title="Other App"><img src="https://img.icons8.com/?size=100&id=XWoSyGbnshH2&format=png&color=000000" alt="App2"/></div>
+         </div>
+    </div>
+
+    <div id="widgets-panel">
+        <div class="widget">
+            <h4>Clock</h4>
+            <div id="widget-clock" style="font-size: 2em; text-align:center; margin: 10px 0;"></div>
+        </div>
+         <div class="widget">
+            <h4>Weather (Simulated)</h4>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                 <i class="fa-solid fa-cloud-sun" style="font-size: 2em;"></i>
+                 <span>Sunny, 25°C</span>
+            </div>
+        </div>
+        <div class="widget">
+            <h4>News (Simulated)</h4>
+            <ul>
+                <li>Simulation Feature Added</li>
+                <li>Web Development Trends</li>
+                <li>JavaScript Updates</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="task-view">
+        <div id="task-view-grid">
+        </div>
+         <button id="close-task-view" title="Close Task View"><i class="fa-solid fa-times"></i></button>
+    </div>
+
+    <div id="calendar-flyout">
+        <div class="calendar-header">
+             <button id="calendar-prev-month"><i class="fa-solid fa-chevron-left"></i></button>
+             <span id="calendar-month-year">January 2024</span>
+             <button id="calendar-next-month"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="calendar-weekdays">
+            <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
+        </div>
+        <div class="calendar-days">
+        </div>
+    </div>
+
+    <div id="action-center">
+        <div class="action-center-header">
+            <span>Notifications</span>
+            <button id="clear-notifications-btn">Clear all</button>
+        </div>
+        <div id="notification-list">
+            <div class="no-notifications">No new notifications</div>
+        </div>
+        <div class="action-center-footer">
+            <span>Quick Settings (Simulated)</span>
+            <div class="quick-settings-grid">
+                <button><i class="fa-solid fa-wifi"></i> Wi-Fi</button>
+                <button><img src="https://img.icons8.com/fluency/30/bluetooth.png" alt="Bluetooth"> Bluetooth</button>
+                <button><i class="fa-solid fa-plane"></i> Airplane Mode</button>
+                <button><i class="fa-solid fa-moon"></i> Focus Assist</button>
+                <button><i class="fa-solid fa-display"></i> Project</button>
+                <button><i class="fa-solid fa-location-dot"></i> Location</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="taskbar">
+        <div class="taskbar-left">
+             <div class="taskbar-icon" id="widgets-button" title="Widgets"><i class="fa-solid fa-table-cells-large"></i></div>
+        </div>
+        <div class="taskbar-center">
+             <div class="taskbar-icons">
+                 <div class="taskbar-icon" id="start-button" title="Start"><i class="fa-brands fa-windows"></i></div>
+                 <div class="taskbar-icon" id="search-button" title="Search"><i class="fa-solid fa-search"></i></div>
+                 <div class="taskbar-icon" id="taskview-button" title="Task View"><i class="fa-regular fa-object-group"></i></div>
+                 <div class="taskbar-icon taskbar-app-icon" id="taskbar-explorer-icon" data-app-id="my-computer" title="File Explorer"><img src="https://img.icons8.com/color/20/folder-invoices--v1.png" alt="Explorer"/></div>
+                 <div class="taskbar-icon taskbar-app-icon" id="taskbar-browser-icon" data-app-id="browser" title="Web Browser"><img src="https://img.icons8.com/color/20/000000/ms-edge.png" alt="Browser"/></div>
+             </div>
+             <div id="minimized-windows">
+             </div>
+        </div>
+        <div class="taskbar-right">
+            <div class="taskbar-icon" id="tray-arrow" title="Show hidden icons"><i class="fa-solid fa-chevron-up"></i></div>
+             <div class="taskbar-icon" title="Input Language"><span style="font-size: 11px; font-weight: 600;">ENG</span></div>
+            <div class="taskbar-icon" title="Network / Internet access"><i class="fa-solid fa-wifi"></i></div>
+            <div class="taskbar-icon" title="Speakers"><i class="fa-solid fa-volume-high"></i></div>
+            <div id="clock-section" title="Calendar & Time">
+                 <div id="clock-time">12:00 PM</div>
+                 <div id="clock-date">1/1/2024</div>
+            </div>
+            <div class="taskbar-icon" id="notification-button" title="Notifications">
+                <i class="fa-regular fa-bell"></i>
+                <span id="notification-badge" style="display: none;"></span>
+            </div>
+            <div id="show-desktop-button"></div>
+        </div>
+    </div>
+
+    <template id="window-template">
+        <div class="window" tabindex="0">
+            <div class="window-titlebar">
+                <img src="" alt="icon" class="window-icon" width="16" height="16">
+                <span class="window-title">Window Title</span>
+                <div class="window-controls">
+                    <button class="window-control win-minimize" title="Minimize"><i class="fa-solid fa-window-minimize"></i></button>
+                    <button class="window-control win-maximize-restore" title="Maximize"><i class="fa-regular fa-square"></i></button>
+                    <button class="window-control win-close" title="Close"><i class="fa-solid fa-times"></i></button>
+                </div>
+            </div>
+            <div class="window-content">
+            </div>
+            <div id="snap-layouts-popup">
+                <div class="snap-layout-option" data-layout="top-left"></div>
+                <div class="snap-layout-option" data-layout="top-right"></div>
+                <div class="snap-layout-option" data-layout="bottom-left"></div>
+                <div class="snap-layout-option" data-layout="bottom-right"></div>
+                <div class="snap-layout-option" data-layout="left"></div>
+                <div class="snap-layout-option" data-layout="right"></div>
+                <div class="snap-layout-option" data-layout="trio-left"></div>
+                <div class="snap-layout-option" data-layout="trio-mid"></div>
+                <div class="snap-layout-option" data-layout="trio-right"></div>
+            </div>
+        </div>
+    </template>
+
+    <template id="notification-toast-template">
+         <div class="notification-toast">
+             <img src="" alt="icon" class="toast-icon">
+             <div class="toast-content">
+                 <div class="toast-title"></div>
+                 <div class="toast-message"></div>
+             </div>
+             <button class="toast-close"><i class="fa-solid fa-times"></i></button>
+         </div>
+     </template>
+
+    <div id="context-menu" class="context-menu" role="menu">
+        <ul>
+            <li class="context-menu-item has-submenu" data-action="view">
+                <i class="fa-solid fa-eye"></i><span class="label">View</span>
+                <i class="fa-solid fa-chevron-right submenu-arrow"></i>
+                <ul class="context-submenu">
+                    <li><i class="fa-solid fa-icons"></i> Large icons</li>
+                    <li><i class="fa-regular fa-square"></i> Medium icons</li>
+                    <li><i class="fa-solid fa-bars"></i> Small icons</li>
+                    <li><i class="fa-solid fa-list"></i> List</li>
+                    <li><i class="fa-solid fa-table-list"></i> Details</li>
+                </ul>
+            </li>
+            <li class="context-menu-item has-submenu" data-action="sortby">
+                <i class="fa-solid fa-arrow-up-wide-short"></i><span class="label">Sort by</span>
+                <i class="fa-solid fa-chevron-right submenu-arrow"></i>
+                 <ul class="context-submenu">
+                    <li><i class="fa-solid fa-signature"></i> Name</li>
+                    <li><i class="fa-solid fa-database"></i> Size</li>
+                    <li><i class="fa-solid fa-bars-staggered"></i> Item type</li>
+                    <li><i class="fa-solid fa-calendar-days"></i> Date modified</li>
+                 </ul>
+            </li>
+            <li class="context-menu-item" data-action="refresh">
+                <i class="fa-solid fa-rotate-right"></i><span class="label">Refresh</span>
+            </li>
+            <li class="context-menu-separator" role="separator"></li>
+            <li class="context-menu-item disabled" data-action="paste">
+                 <i class="fa-regular fa-paste"></i><span class="label">Paste</span>
+                 <span class="shortcut">Ctrl+V</span>
+             </li>
+            <li class="context-menu-item disabled" data-action="paste-shortcut">
+                 <i class="fa-solid fa-link"></i><span class="label">Paste shortcut</span>
+            </li>
+            <li class="context-menu-separator" role="separator"></li>
+            <li class="context-menu-item has-submenu" data-action="new">
+               <i class="fa-regular fa-square-plus"></i><span class="label">New</span>
+               <i class="fa-solid fa-chevron-right submenu-arrow"></i>
+                <ul class="context-submenu">
+                    <li data-sub-action="new-folder"><i class="fa-regular fa-folder"></i> Folder</li>
+                    <li data-sub-action="new-shortcut"><i class="fa-solid fa-rocket"></i> Shortcut</li>
+                    <li class="context-menu-separator" role="separator"></li>
+                    <li data-sub-action="new-text"><i class="fa-regular fa-file-lines"></i> Text Document</li>
+                    <li data-sub-action="new-bitmap"><i class="fa-regular fa-image"></i> Bitmap Image</li>
+                    <li data-sub-action="new-word"><i class="fa-regular fa-file-word"></i> Microsoft Word Document</li>
+                    <li data-sub-action="new-zip"><i class="fa-solid fa-file-zipper"></i> Compressed (zipped) Folder</li>
+                </ul>
+            </li>
+             <li class="context-menu-separator" role="separator"></li>
+             <li class="context-menu-item" data-action="display-settings">
+                <i class="fa-solid fa-display"></i><span class="label">Display settings</span>
+            </li>
+             <li class="context-menu-item" data-action="personalize">
+                <i class="fa-solid fa-paintbrush"></i><span class="label">Personalize</span>
+            </li>
+             <li class="context-menu-item" data-action="change-background">
+                <i class="fa-regular fa-image"></i><span class="label">Change background</span>
+            </li>
+             <li class="context-menu-separator" role="separator"></li>
+            <li class="context-menu-item" data-action="open-terminal">
+                <i class="fa-solid fa-terminal"></i><span class="label">Open in Terminal</span>
+            </li>
+             <li class="context-menu-separator" role="separator"></li>
+             <li class="context-menu-item" data-action="show-more">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i><span class="label">Show more options</span>
+            </li>
+        </ul>
+    </div>
+
+    <div id="file-context-menu" class="context-menu" role="menu">
+         <ul>
+             <li class="context-menu-item" data-action="open"><i class="fa-regular fa-folder-open"></i><span class="label">Open</span></li>
+             <li class="context-menu-item" data-action="run-admin"><i class="fa-solid fa-shield-halved"></i><span class="label">Run as administrator</span></li>
+             <li class="context-menu-separator" role="separator"></li>
+             <li class="context-menu-item" data-action="cut"><i class="fa-solid fa-scissors"></i><span class="label">Cut</span><span class="shortcut">Ctrl+X</span></li>
+             <li class="context-menu-item" data-action="copy"><i class="fa-regular fa-copy"></i><span class="label">Copy</span><span class="shortcut">Ctrl+C</span></li>
+             <li class="context-menu-item" data-action="rename"><i class="fa-solid fa-i-cursor"></i><span class="label">Rename</span><span class="shortcut">F2</span></li>
+             <li class="context-menu-separator" role="separator"></li>
+             <li class="context-menu-item" data-action="delete"><i class="fa-regular fa-trash-can"></i><span class="label">Delete</span><span class="shortcut">Del</span></li>
+             <li class="context-menu-separator" role="separator"></li>
+             <li class="context-menu-item" data-action="properties"><i class="fa-solid fa-list-check"></i><span class="label">Properties</span></li>
+         </ul>
+    </div>
+
+     <div id="taskbar-context-menu" class="context-menu" role="menu">
+         <ul>
+             <li class="context-menu-item" data-action="open-app"><i class="fa-regular fa-folder-open"></i><span class="label">Open</span></li>
+             <li class="context-menu-item" data-action="unpin"><i class="fa-solid fa-thumbtack fa-rotate-by" style="--fa-rotate-angle: -45deg;"></i><span class="label">Unpin from taskbar</span></li>
+             <li class="context-menu-item" data-action="pin" style="display:none;"><i class="fa-solid fa-thumbtack"></i><span class="label">Pin to taskbar</span></li>
+             <li class="context-menu-item" data-action="close-window"><i class="fa-solid fa-times"></i><span class="label">Close window</span></li>
+             <li class="context-menu-separator" role="separator"></li>
+             <li class="context-menu-item" data-action="taskbar-settings"><i class="fa-solid fa-gear"></i><span class="label">Taskbar settings</span></li>
+         </ul>
+    </div>
+
+     <div id="error-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">Error</span>
+                <button class="modal-close"><i class="fa-solid fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                 <i class="fa-solid fa-circle-exclamation error-icon"></i>
+                 <span id="error-modal-message">An error occurred.</span>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-ok-button">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
